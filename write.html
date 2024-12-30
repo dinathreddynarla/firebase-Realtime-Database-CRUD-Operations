@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase,ref,set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAoA6XX1Mrxg9RPvF1Fl9QQyYgyZo_Kzg4",
+          authDomain: "fir-seminar-f2b68.firebaseapp.com",
+          databaseURL: "https://fir-seminar-f2b68-default-rtdb.firebaseio.com",
+          projectId: "fir-seminar-f2b68",
+          storageBucket: "fir-seminar-f2b68.firebasestorage.app",
+          messagingSenderId: "506611064392",
+          appId: "1:506611064392:web:0721db79fb6ab12813427d"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Realtime Database
+        const database = getDatabase(app);
+
+        // Get Reference of DataBase that has to CRUD operations
+        const dbRef = ref(database);
+
+        // dynamic providing of productId to create Data at an address
+        let productId = 15;
+
+        // dynamic providing of data to assign Data to that particular address
+
+        let brand="Boat";
+        let category="Electronics";
+        let id=15;
+        let name="Immortal 131";
+        let price=19.99;
+        let rating=4.9;
+        let reviews=150;
+        let stock=100;
+        
+        //For basic write operations, you can use set() to save data to a specified reference
+        // replacing any existing data at that path
+
+        set(ref(database, 'products/' + productId), {
+            brand: brand,
+            category: category,
+            id: id,
+            name: name,
+            price: price,
+            rating: rating,
+            reviews: reviews,
+            stock: stock
+        })
+        .then(() => {
+            console.log("Data saved successfully!");
+        })
+        .catch((error) => {
+            console.error("Error saving data:", error);
+        });
+        
+
+
+      </script>
+</body>
+</html>

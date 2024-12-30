@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase,ref, child, get } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAoA6XX1Mrxg9RPvF1Fl9QQyYgyZo_Kzg4",
+          authDomain: "fir-seminar-f2b68.firebaseapp.com",
+          databaseURL: "https://fir-seminar-f2b68-default-rtdb.firebaseio.com",
+          projectId: "fir-seminar-f2b68",
+          storageBucket: "fir-seminar-f2b68.firebasestorage.app",
+          messagingSenderId: "506611064392",
+          appId: "1:506611064392:web:0721db79fb6ab12813427d"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Realtime Database
+        const database = getDatabase(app);
+
+        // Get Reference of DataBase that has to CRUD operations
+        const dbRef = ref(database);
+
+        // dynamic providing of id to get the particular data
+        let productId = 4;
+
+        // Child refers to child of Reference(dbRef) and Get method used to get the details of specified path
+        // product/userId specifies the particular child need to get accessed
+
+
+        get(child(dbRef, `products/${productId}`)).then((snapshot) => {
+
+        // snapshot is like a doc of particular address
+        // exists() method checks if there any doc with the given address
+        // val() methods products the value of the doc that we need ,, simply data of that address
+
+        if (snapshot.exists()) {
+            console.log(snapshot.val());
+        } else {
+            console.log("No data available");
+        }
+        }).catch((error) => {
+        console.error(error);
+        });
+
+
+
+      </script>
+</body>
+</html>

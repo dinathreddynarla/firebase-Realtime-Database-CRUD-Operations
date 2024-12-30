@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase,ref,update } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAoA6XX1Mrxg9RPvF1Fl9QQyYgyZo_Kzg4",
+          authDomain: "fir-seminar-f2b68.firebaseapp.com",
+          databaseURL: "https://fir-seminar-f2b68-default-rtdb.firebaseio.com",
+          projectId: "fir-seminar-f2b68",
+          storageBucket: "fir-seminar-f2b68.firebasestorage.app",
+          messagingSenderId: "506611064392",
+          appId: "1:506611064392:web:0721db79fb6ab12813427d"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Data you want to update
+        const productId = 15; // ID of the product to update
+        const updatedData = {
+            price: 24.99,      // New price
+            stock: 120,        // Updated stock
+            rating: 4.8        // Updated rating
+        };
+
+        // Reference to the specific product in the database
+        const productRef = ref(database, `products/${productId}`);
+
+        // Perform the update
+        update(productRef, updatedData)
+            .then(() => {
+                console.log("Data updated successfully!");
+            })
+            .catch((error) => {
+                console.error("Error updating data:", error);
+            });
+                
+
+
+    </script>
+</body>
+</html>
+
+

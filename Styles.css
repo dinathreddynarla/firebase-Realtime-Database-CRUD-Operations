@@ -30,12 +30,21 @@ section {
     justify-content: center;
     align-items: center;    
 }
+#readResult{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 button {
     padding: 10px 15px;
     background-color: #007BFF;
     color: #fff;
     border: none;
     border-radius: 5px;
+    margin-bottom: 10px;
     cursor: pointer;
     font-size: 1.2rem;
 }
@@ -109,6 +118,26 @@ h2 {
     font-size: 16px;
     cursor: pointer;
 }
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-card h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.product-card p {
+    margin: 4px 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
 
 @keyframes slide-down {
     from {
@@ -130,6 +159,9 @@ h2 {
         font-size: 1.1rem;
         padding: 10px 12px;
     }
+    #readResult{   
+        grid-template-columns: repeat(3,auto);
+    }
 }
 
 @media (max-width: 768px) {
@@ -143,6 +175,9 @@ h2 {
     button {
         width: 100%;
         font-size: 1rem;
+    }
+    #readResult{   
+        grid-template-columns: repeat(2,auto);
     }
 }
 
@@ -162,5 +197,8 @@ h2 {
     }
     .card p {
         font-size: 0.9rem;
+    }
+    #readResult{   
+        grid-template-columns: repeat(1,auto);
     }
 }

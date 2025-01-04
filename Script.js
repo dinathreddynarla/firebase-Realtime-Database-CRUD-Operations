@@ -82,6 +82,40 @@ function createData() {
         .then(() => showAlert("Data created successfully!", "success"))
         .catch((error) => showAlert("Error creating data: " + error, "error"));
 }
+// Event listener for reading all data
+document.getElementById("readAllDataBtn").addEventListener("click", readAllData);
+
+// Function to read and display all data
+function readAllData() {
+    get(child(ref(database), `products`)) // Fetch all data from 'products' node
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                const data = snapshot.val();
+                const resultDiv = document.getElementById("readResult");
+                resultDiv.innerHTML = ""; // Clear previous results
+
+                // Loop through all products and display them
+                Object.entries(data).forEach(([productId, productData]) => {
+                    const productCard = `
+                        <div class="product-card">
+                            <h3>Product ID: ${productId}</h3>
+                            <p><strong>Brand:</strong> ${productData.brand}</p>
+                            <p><strong>Category:</strong> ${productData.category}</p>
+                            <p><strong>Name:</strong> ${productData.name}</p>
+                            <p><strong>Price:</strong> $${productData.price}</p>
+                            <p><strong>Rating:</strong> ${productData.rating} ★</p>
+                            <p><strong>Reviews:</strong> ${productData.reviews}</p>
+                            <p><strong>Stock:</strong> ${productData.stock}</p>
+                        </div>
+                    `;
+                    resultDiv.innerHTML += productCard; // Append each product card
+                });
+            } else {
+                showAlert("No data found in the database.", "error");
+            }
+        })
+        .catch((error) => showAlert("Error fetching data: " + error, "error"));
+}
 
 // Function to read data from the database
 function readData() {

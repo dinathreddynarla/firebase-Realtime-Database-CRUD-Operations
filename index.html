@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase CRUD Operations</title>
+    <link rel="stylesheet" href="./Styles.css">
+</head>
+<body>
+    <header>
+        <h1>Firebase Realtime Database CRUD Operations</h1>
+    </header>
+    <main>
+        <div class="btn-container">
+            <button id="btnCreate">Create Data</button>
+            <button id="btnRead">Read Data</button>
+            <button id="btnUpdate">Update Data</button>
+            <button id="btnDelete">Delete Data</button>
+        </div>
+
+        <section id="create">
+            <h2>Create Data</h2>
+            <input id="createId" placeholder="Product ID" type="text">
+            <input id="createBrand" placeholder="Brand" type="text">
+            <input id="createCategory" placeholder="Category" type="text">
+            <input id="createName" placeholder="Name" type="text">
+            <input id="createPrice" placeholder="Price" type="number">
+            <input id="createRating" placeholder="Rating" type="number">
+            <input id="createReviews" placeholder="Reviews" type="number">
+            <input id="createStock" placeholder="Stock" type="number">
+            <button id="createDataBtn">Create</button>
+        </section>
+
+        <section id="read">
+            <h2>Read Data</h2>
+            <input id="readId" placeholder="Product ID" type="text">
+            <button id="readDataBtn">Read</button>
+            <div id="readResult" class="card"></div>
+        </section>
+
+        <section id="update">
+            <h2>Update Data</h2>
+            <input id="updateId" placeholder="Product ID" type="text">
+            <input id="updateField" placeholder="Field to Update (e.g., price)" type="text">
+            <input id="updateValue" placeholder="New Value" type="text">
+            <button id="updateDataBtn">Update</button>
+        </section>
+
+        <section id="delete">
+            <h2>Delete Data</h2>
+            <input id="deleteId" placeholder="Product ID" type="text">
+            <button id="deleteDataBtn">Delete</button>
+        </section>
+        <div id="alert-box" class="alert hidden">
+            <span id="alert-message"></span>
+            
+        </div>
+        
+    </main>
+    <script type="module" src="./Script.js"></script>
+</body>
+</html>
